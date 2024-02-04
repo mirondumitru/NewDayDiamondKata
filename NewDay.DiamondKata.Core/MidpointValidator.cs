@@ -2,13 +2,13 @@
 
 public class MidpointValidator : IMidpointValidator
 {
-    private readonly int _maxAscii = 90;
-    private readonly int _minAscii = 65;
+    private const int MaxRangeAscii = 90;
+    private const int MinRangeAscii = 65;
 
     public bool IsValid(char midpoint)
     {
         var ascii = (int)midpoint;
 
-        return _minAscii <= ascii && ascii <= _maxAscii;
+        return ascii is >= MinRangeAscii and <= MaxRangeAscii;
     }
 }

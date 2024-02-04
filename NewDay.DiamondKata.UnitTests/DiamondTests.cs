@@ -77,7 +77,7 @@ public class DiamondTests
     }
 
     [Fact]
-    public void GivenDifferentMidpoints_CreatesDiamod()
+    public void GivenDifferentMidpoints_CreatesDiamond()
     {
         // arrange
         var perimeter = new[] { 'A', 'B', 'C' };
