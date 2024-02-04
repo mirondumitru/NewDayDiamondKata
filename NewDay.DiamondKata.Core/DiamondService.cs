@@ -2,23 +2,22 @@
 
 public class DiamondService
 {
-    private readonly IMidpointValidator _midpointValidator;
+    private readonly IMidpointHandler _midpointHandler;
 
-    public DiamondService(IMidpointValidator midpointValidator)
+    public DiamondService(IMidpointHandler midpointHandler)
     {
-        _midpointValidator = midpointValidator;
+        _midpointHandler = midpointHandler;
     }
-
 
     public Diamond CreateDiamond(char midpoint)
     {
-        if (!_midpointValidator.IsValid(midpoint))
+        if (!_midpointHandler.IsInRange(midpoint))
         {
             throw new ArgumentException($"'{midpoint}' is not a valid midpoint");
         }
 
-        return default;
+        var range = _midpointHandler.CreateRangeUpTo(midpoint);
 
-        //return new Diamond(50);
+        return new Diamond(range, ' ');
     }
 }   
