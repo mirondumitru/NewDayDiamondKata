@@ -3,10 +3,12 @@
 public class DiamondService
 {
     private readonly IMidpointHandler _midpointHandler;
+    private readonly IBlankCharProvider _blankCharProvider;
 
-    public DiamondService(IMidpointHandler midpointHandler)
+    public DiamondService(IMidpointHandler midpointHandler, IBlankCharProvider blankCharProvider)
     {
         _midpointHandler = midpointHandler;
+        _blankCharProvider = blankCharProvider;
     }
 
     public Diamond CreateDiamond(char midpoint)
@@ -17,7 +19,8 @@ public class DiamondService
         }
 
         var range = _midpointHandler.CreateRangeUpTo(midpoint);
+        var blankChar = _blankCharProvider.Value;
 
-        return new Diamond(range, ' ');
+        return new Diamond(range, blankChar);
     }
-}   
+}
